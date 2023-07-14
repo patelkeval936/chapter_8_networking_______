@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:chapter_8_networking/custom_interceptor.dart';
 import 'package:flutter/material.dart';
 import 'package:dio/dio.dart';
 import 'package:path_provider/path_provider.dart' as path;
@@ -37,16 +38,29 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+Dio dio = Dio();
+
 class _HomePageState extends State<HomePage> {
+
   ApiResponse? apiResponse;
-  Dio dio = Dio();
+
+  addInterceptors(){
+    dio.interceptors.add(CustomIntercepter());
+    dio.interceptors.add(LogInterceptor(requestBody: true));
+    dio.interceptors.add(CustomIntercepter2());
+  }
 
   void get() async {
 
-
     Uri url = Uri.https('fakestoreapi.com', '/products/1');
     // var response = await dio.getUri(url);
-    var response = await dio.get('https://fakestoreapi.com/products/1');
+    var response;
+    try{
+       response = await dio.get('https://fakestoreapi.com/products/1');
+    }catch(e){
+
+    }
+
     setState(() {
       apiResponse = ApiResponse(response.data.toString(), response.headers.toString(), response.statusCode.toString());
     });
@@ -65,7 +79,7 @@ class _HomePageState extends State<HomePage> {
 
     // Directory directory = await path.getApplicationDocumentsDirectory();
 
-    var response = await dio.get(
+    Response response = await dio.get(
       // 'https://sample-videos.com/img/Sample-jpg-image-30mb.jpg',
       'https://static.toiimg.com/thumb/resizemode-4,msid-101534099,width-800,height-450,imgv-75/101534099.jpg',
       cancelToken: cancelToken1,
@@ -78,8 +92,6 @@ class _HomePageState extends State<HomePage> {
 
     // print(directory.path);
     //
-    String data = response.data;
-    print(data);
     //
     // dio.request('',options: Options());
     //
@@ -92,11 +104,16 @@ class _HomePageState extends State<HomePage> {
 
   void getImage2() async {
 
+    RequestOptions();
+    Options();
+    HttpClientRequest;
+
     Directory directory = await path.getApplicationDocumentsDirectory();
 
     final file = File('${directory.path}/image.jpg');
 
     var response = await dio.download(
+      options: Options(),
       'https://static.toiimg.com/thumb/resizemode-4,msid-101534099,width-800,height-450,imgv-75/101534099.jpg',
       // 'https://sample-videos.com/img/Sample-jpg-image-30mb.jpg',
       file.path,
@@ -137,10 +154,10 @@ class _HomePageState extends State<HomePage> {
   //   String apiKey = '472b8953adb0c8675ece88c89e08efde';
   //   Uri uri = Uri.parse('https://api.imgbb.com/1/upload');
   //   print(uri.queryParametersAll);
-  //   final res = await http.post(uri,
-  //       body: {"key":apiKey,"image":base64Encode(file)}
-  //       );
-  //   print(res.statusCode);
+  //   // final res = await http.post(uri,
+  //   //     body: {"key":apiKey,"image":base64Encode(file)}
+  //   //     );
+  //   // print(res);
   //
   //
   //
@@ -199,7 +216,7 @@ class _HomePageState extends State<HomePage> {
       // 'description': 'lorem ipsum set',
       'image': 'https://i.pravatar.cc',
       'category': 'electronic'
-    });
+    },);
     setState(() {
       apiResponse = ApiResponse(response.data.toString(), response.headers.toString(), response.statusCode.toString());
     });
@@ -230,11 +247,18 @@ class _HomePageState extends State<HomePage> {
     print('put response is ${response.data}');
   }
 
+
+  @override
+  void initState() {
+    addInterceptors();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Network'),
+        title: const Text('DIO'),
       ),
       body: SingleChildScrollView(
         child: Center(

@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 import 'dart:typed_data';
@@ -37,6 +38,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
   ApiResponse? apiResponse;
 
   void read() async {
@@ -74,7 +76,6 @@ class _HomePageState extends State<HomePage> {
     print('get Header is ${response.headers}');
     print('get response is ${response.bodyBytes}');
 
-
     setState(() {
       image = Image.memory(response.bodyBytes);
     });
@@ -85,6 +86,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   void uploadImageUsingMultiPart(Uint8List file) async {
+
     String apiKey = '472b8953adb0c8675ece88c89e08efde';
 
     final request = http.MultipartRequest('POST', Uri.parse('https://api.imgbb.com/1/upload'));
@@ -97,11 +99,11 @@ class _HomePageState extends State<HomePage> {
     request.files.add(
         http.MultipartFile.fromBytes('file', file.toList())
     );
+
     request.headers.addAll(headers);
     final res = await request.send();
     print(res.statusCode);
   }
-
 
   String uint8ListTob64(Uint8List uint8list) {
     String base64String = base64Encode(uint8list);
@@ -187,21 +189,18 @@ class _HomePageState extends State<HomePage> {
         image = Image.memory(Uint8List.fromList(imageData));
       });
       uploadImageWithProgress(imageData);
-    });
-
-  }
-
+      },
+    );
+}
 
   void uploadImage(Uint8List file) async {
-    String apiKey = '472b8953adb0c8675ece88c89e08efde';
+    String apiKey = '89874052fad8103e839a2c97141a1a00';
     Uri uri = Uri.parse('https://api.imgbb.com/1/upload');
     print(uri.queryParametersAll);
     final res = await http.post(uri,
         body: {"key":apiKey,"image":base64Encode(file)}
     );
     print(res.statusCode);
-
-
 
     final request = http.MultipartRequest(
         'POST', Uri.parse('https://api.imgbb.com/1/upload?key=$apiKey')
@@ -259,7 +258,6 @@ class _HomePageState extends State<HomePage> {
     //     body: {"key":apiKey,"image":base64Encode(file)}
     // );
     // print(res.statusCode);
-
 
   }
 

@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
   ApiResponse? apiResponse;
 
   void read() async {
+
     Uri url = Uri.https('fakestoreapi.com', '/products/1');
     var response = await http.read(url);
     print(response);
@@ -230,7 +231,7 @@ class _HomePageState extends State<HomePage> {
     print(res.statusCode);
   }
 
-  void uploadImageWithProgress(List<int> imageData)async{
+  void uploadImageWithProgress(List<int> imageData) async {
 
     print('uploading....');
 

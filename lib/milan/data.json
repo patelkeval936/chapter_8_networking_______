@@ -1,0 +1,38 @@
+{
+  "data": {
+    "id": "5cdBYQ4",
+    "title": "7e47cfb3eee8",
+    "url_viewer": "https://ibb.co/5cdBYQ4",
+    "url": "https://i.ibb.co/ZT3WHQX/7e47cfb3eee8.png",
+    "display_url": "https://i.ibb.co/88J6zys/7e47cfb3eee8.png",
+    "width": 1037,
+    "height": 542,
+    "size": 312761,
+    "time": 1689172838,
+    "expiration": 0,
+    "image": {
+      "filename": "7e47cfb3eee8.png",
+      "name": "7e47cfb3eee8",
+      "mime": "image/png",
+      "extension": "png",
+      "url": "https://i.ibb.co/ZT3WHQX/7e47cfb3eee8.png"
+    },
+    "thumb": {
+      "filename": "7e47cfb3eee8.png",
+      "name": "7e47cfb3eee8",
+      "mime": "image/png",
+      "extension": "png",
+      "url": "https://i.ibb.co/5cdBYQ4/7e47cfb3eee8.png"
+    },
+    "medium": {
+      "filename": "7e47cfb3eee8.png",
+      "name": "7e47cfb3eee8",
+      "mime": "image/png",
+      "extension": "png",
+      "url": "https://i.ibb.co/88J6zys/7e47cfb3eee8.png"
+    },
+    "delete_url": "https://ibb.co/5cdBYQ4/41e99d93331d73a25bf228837ba4412e"
+  },
+  "success": true,
+  "status": 200
+}

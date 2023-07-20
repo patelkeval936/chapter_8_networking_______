@@ -1,6 +1,6 @@
 import 'package:json_annotation/json_annotation.dart';
 
-part 'product.g.dart';
+part 'other.g.dart';
 
 @JsonEnum(fieldRename: FieldRename.pascal, valueField: 'visible-hoy-shake')
 enum IsVisible {
@@ -12,6 +12,7 @@ enum IsVisible {
 
 @JsonSerializable()
 class Rating {
+
   final String id;
   final int star;
 

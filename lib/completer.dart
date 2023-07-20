@@ -16,7 +16,6 @@ Future<String> doSomething() {
     completer.complete('Complete!!');
     print('Do Something!! 2');
   });
-
   print('outside timer');
   return completer.future;
 }

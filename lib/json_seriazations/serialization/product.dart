@@ -3,25 +3,30 @@ import 'package:json_annotation/json_annotation.dart';
 part 'product.g.dart';
 
 @JsonSerializable(
-  explicitToJson: true,
-  createToJson: true,
-  checked: false,
-  // constructor: 'hello_constructor',
-  createFactory: true,
-  createFieldMap: false,
-  createPerFieldToJson: false,
-  includeIfNull: true,
-  anyMap: false,
-  fieldRename: FieldRename.snake,
-  genericArgumentFactories: true,
-  disallowUnrecognizedKeys: false,
-  ignoreUnannotated: true,
-  converters: []
+    explicitToJson: true,
+    createToJson: true,
+    checked: false,
+    // constructor: 'hello_constructor',
+    createFactory: true,
+    createFieldMap: false,
+    createPerFieldToJson: false,
+    includeIfNull: true,
+    anyMap: false,
+    fieldRename: FieldRename.snake,
+    genericArgumentFactories: false,
+    disallowUnrecognizedKeys: false,
+    ignoreUnannotated: true,
+    converters: []
 )
 class Product {
-  @JsonKey(name: 'id')
+  @JsonKey(
+    name: 'id',
+    includeIfNull: false,
+    disallowNullValue: true,
+    includeFromJson: true,
+  )
   int? id;
-  @JsonKey(name: 'name')
+  @JsonKey(name: 'name', required: true,)
   String? name;
   @JsonKey(name: 'category')
   String? category;

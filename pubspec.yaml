@@ -42,6 +42,7 @@ dependencies:
   json_annotation:
   mobx:
   mobx_codegen:
+  intl:
 
 dev_dependencies:
   flutter_test:

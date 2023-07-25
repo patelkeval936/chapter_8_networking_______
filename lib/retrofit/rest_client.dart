@@ -31,8 +31,8 @@ abstract class RestClient {
   @POST('/products')
   Future<Product> cancelRequest(@CancelRequest() cancelRequest);
 
-  // @POST('/products')
-  // Future<Product> createTaskFromFile(@Part(name: 'file.jpeg',fileName: 'filename',contentType: 'image/jpeg') File file);
+  @POST('/products')
+  Future<Product> createTaskFromFile(@Part(name: 'file.jpeg',fileName: 'filename',contentType: 'image/jpeg') File file);
 
   // @POST('/products')
   // @Headers(<String,dynamic>{

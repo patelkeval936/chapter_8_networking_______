@@ -8,7 +8,7 @@ part 'product.g.dart';
     checked: false,
     // constructor: 'hello_constructor',
     createFactory: true,
-    createFieldMap: false,
+    createFieldMap: true,
     createPerFieldToJson: false,
     includeIfNull: true,
     anyMap: false,
@@ -16,7 +16,7 @@ part 'product.g.dart';
     genericArgumentFactories: false,
     disallowUnrecognizedKeys: false,
     ignoreUnannotated: true,
-    converters: []
+    converters: [],
 )
 class Product {
   @JsonKey(

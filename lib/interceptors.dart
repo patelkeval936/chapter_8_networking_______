@@ -44,6 +44,7 @@ class _HomePageState extends State<HomePage> {
   Dio dio = Dio();
 
   Future<Response> get(int index) async {
+
     dio.interceptors.clear();
     dio.interceptors.add(CustomIntercepter());
     dio.interceptors.add(CustomIntercepter2());

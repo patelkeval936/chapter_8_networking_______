@@ -21,6 +21,14 @@ Product _$ProductFromJson(Map<String, dynamic> json) {
   );
 }
 
+const _$ProductFieldMap = <String, String>{
+  'id': 'id',
+  'name': 'name',
+  'category': 'category',
+  'price': 'price',
+  'rating': 'rating',
+};
+
 Map<String, dynamic> _$ProductToJson(Product instance) {
   final val = <String, dynamic>{};
 

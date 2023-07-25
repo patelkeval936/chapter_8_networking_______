@@ -203,6 +203,41 @@ class _RestClient implements RestClient {
   }
 
   @override
+  Future<Product> createTaskFromFile(File file) async {
+    const _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.files.add(MapEntry(
+      'file.jpeg',
+      MultipartFile.fromFileSync(
+        file.path,
+        filename: 'filename',
+        contentType: MediaType.parse('image/jpeg'),
+      ),
+    ));
+    final _result =
+        await _dio.fetch<Map<String, dynamic>>(_setStreamType<Product>(Options(
+      method: 'POST',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/products',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
+    final value = Product.fromJson(_result.data!);
+    return value;
+  }
+
+  @override
   Future<Product> addedToHeaderProperty(
     String hello,
     String hello1,

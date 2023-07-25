@@ -1,4 +1,5 @@
 
+import 'package:flutter/material.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'product.g.dart';
@@ -14,6 +15,7 @@ class Product{
 
   factory Product.fromJson(Map<String,dynamic> data) {
     print(data);
+
     return _$ProductFromJson(data);
   }
 

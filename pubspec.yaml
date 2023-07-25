@@ -43,6 +43,7 @@ dependencies:
   mobx:
   mobx_codegen:
   intl:
+  chopper:
 
 dev_dependencies:
   flutter_test:
@@ -57,6 +58,7 @@ dev_dependencies:
   retrofit_generator:
   build_runner:
   json_serializable:
+  chopper_generator:
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 

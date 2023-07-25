@@ -8,6 +8,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    (_dio.httpClientAdapter as DefaultHttpClientAdapter).onHttpClientCreate =
+        (HttpClient dioClient) {
+      dioClient.badCertificateCallback =
+      ((X509Certificate cert, String host, int port) => true);
+      return dioClient;
+    };
+
     return MaterialApp(
       title: 'Material App',
       theme: ThemeData.dark(),

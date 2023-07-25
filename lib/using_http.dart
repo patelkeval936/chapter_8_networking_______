@@ -45,6 +45,7 @@ class _HomePageState extends State<HomePage> {
 
     Uri url = Uri.https('fakestoreapi.com', '/products/1');
     var response = await http.read(url);
+    http.readBytes(url);
     print(response);
   }
 

@@ -3,7 +3,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'product_store.g.dart';
 
-@JsonEnum(alwaysCreate: true)
+@JsonEnum(alwaysCreate: true,valueField:'hello world')
 enum StockMarketStatus {
   @JsonValue('value is open')
   open,
